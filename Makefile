@@ -5,17 +5,20 @@ help: ## Print Makefile help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' ${MAKEFILE_LIST} | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
 
-SUDO            = $(shell which sudo)
-IMAGE_NAME     ?= danielhoherd/geekbench
-CONTAINER_NAME ?= geekbench
-NO_CACHE       ?= false
-ORG_PREFIX     ?= danielhoherd
-GIT_ORIGIN      = $(shell git config --get remote.origin.url)
-GIT_BRANCH      = $(shell git rev-parse --abbrev-ref HEAD)
-GIT_SHA_SHORT   = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo "DIRTY" ; else git rev-parse --short HEAD ; fi)
-GIT_SHA_LONG    = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo "DIRTY" ; else git rev-parse HEAD ; fi)
-BUILD_TIME      = $(shell date '+%s')
-RESTART        ?= always
+SUDO               = $(shell which sudo)
+IMAGE_NAME        ?= danielhoherd/geekbench
+CONTAINER_NAME    ?= geekbench
+NO_CACHE          ?= false
+ORG_PREFIX        ?= danielhoherd
+GIT_ORIGIN         = $(shell git config --get remote.origin.url)
+GIT_BRANCH         = $(shell git rev-parse --abbrev-ref HEAD)
+GIT_SHA_SHORT      = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo "DIRTY" ; else git rev-parse --short HEAD ; fi)
+GIT_SHA_LONG       = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo "DIRTY" ; else git rev-parse HEAD ; fi)
+BUILD_TIME         = $(shell date '+%s')
+RESTART           ?= always
+GEEKBENCH_VERSION ?= 4.3.3-Linux
+GEEKBENCH_PACKAGE ?= Geekbench-${GEEKBENCH_VERSION}.tar.gz
+
 
 .PHONY: all
 all: build
@@ -23,7 +26,10 @@ all: build
 .PHONY: build
 build: ## Build the Dockerfile found in PWD
 	docker build --no-cache="${NO_CACHE}" \
+		--build-arg GEEKBENCH_VERSION=${GEEKBENCH_VERSION} \
+		--build-arg GEEKBENCH_PACKAGE=${GEEKBENCH_PACKAGE} \
 		-t "${IMAGE_NAME}:latest" \
+		-t "${IMAGE_NAME}:${GEEKBENCH_VERSION}" \
 		-t "${IMAGE_NAME}:${GIT_BRANCH}-${GIT_SHA_SHORT}" \
 		--label "${ORG_PREFIX}.repo.origin=${GIT_ORIGIN}" \
 		--label "${ORG_PREFIX}.repo.branch=${GIT_BRANCH}" \
