@@ -79,3 +79,8 @@ rm: stop ## Delete deployed container
 .PHONY: logs
 logs: ## View the last 30 minutes of log entries
 	docker logs --since 30m "${CONTAINER_NAME}"
+
+.PHONY: push
+push: ## Push built container to docker hub
+	docker push ${IMAGE_NAME}:latest
+	docker push ${IMAGE_NAME}:${GEEKBENCH_VERSION}
