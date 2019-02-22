@@ -2,19 +2,13 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.1.0
     hooks:
-      - id: check-byte-order-marker
       - id: check-case-conflict
       - id: check-json
       - id: check-merge-conflict
       - id: check-xml
       - id: check-yaml
-      - id: debug-statements
-      - id: double-quote-string-fixer
       - id: end-of-file-fixer
-      - id: fix-encoding-pragma
-      - id: flake8
       - id: mixed-line-ending
-      - id: requirements-txt-fixer
       - id: sort-simple-yaml
       - id: trailing-whitespace
   - repo: https://github.com/detailyang/pre-commit-shell
@@ -26,10 +20,6 @@ repos:
     hooks:
       - id: remove-tabs
         exclude_types: [makefile]
-  - repo: https://github.com/asottile/reorder_python_imports
-    rev: v1.3.5
-    hooks:
-      - id: reorder-python-imports
   - repo: local
     hooks:
       - id: remove-unicode-non-breaking-spaces
