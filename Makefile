@@ -82,5 +82,4 @@ logs: ## View the last 30 minutes of log entries
 
 .PHONY: push
 push: ## Push built container to docker hub
-	docker push ${IMAGE_NAME}:latest
-	docker push ${IMAGE_NAME}:${GEEKBENCH_VERSION}
+	docker push ${IMAGE_NAME}
