@@ -25,4 +25,4 @@ RUN wget --quiet --no-check-certificate http://cdn.geekbench.com/$GEEKBENCH_PACK
 
 WORKDIR /opt/geekbench/Geekbench-$GEEKBENCH_VERSION
 
-CMD ["./geekbench4"]
+CMD ["./geekbench5"]
