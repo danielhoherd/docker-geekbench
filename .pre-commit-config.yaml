@@ -27,11 +27,11 @@ repos:
       - id: remove-tabs
         exclude_types: [makefile, binary]
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.19.0
+    rev: v1.20.0
     hooks:
       - id: yamllint
   - repo: https://github.com/danielhoherd/pre-commit-hooks
-    rev: 1a8d3b95b329e8aecd81ce0620a220f4053b46f0
+    rev: d0ec497c80183b0e8b19216154c26a956103a416
     hooks:
       - id: remove-unicode-non-breaking-spaces
       - id: remove-unicode-zero-width-non-breaking-spaces

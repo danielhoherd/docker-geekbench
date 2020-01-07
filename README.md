@@ -5,6 +5,7 @@ Unofficial Docker image for Geekbench 4.
 ## Changelog
 
 ```
+- 2020-01-07: Upgraded to Geekbench 5.1.0 on Ubuntu Bionic - danielhoherd
 - 2019-12-03: Upgraded to Geekbench 5.0.4 on Ubuntu Bionic - danielhoherd
 - 2019-09-10: Upgraded to Geekbench 5.0.0 on Ubuntu Bionic - danielhoherd
 - 2019-06-21: Upgraded to Geekbench 4.3.4 on Ubuntu Bionic - danielhoherd
