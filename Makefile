@@ -16,7 +16,7 @@ GIT_SHA_SHORT      = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo 
 GIT_SHA_LONG       = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo "DIRTY" ; else git rev-parse HEAD ; fi)
 BUILD_TIME         = $(shell date '+%s')
 RESTART           ?= always
-GEEKBENCH_VERSION ?= 5.1.0-Linux
+GEEKBENCH_VERSION ?= 5.2.1-Linux
 GEEKBENCH_PACKAGE ?= Geekbench-${GEEKBENCH_VERSION}.tar.gz
 
 
@@ -83,3 +83,9 @@ logs: ## View the last 30 minutes of log entries
 .PHONY: push
 push: ## Push built container to docker hub
 	docker push ${IMAGE_NAME}
+
+.PHONY: check-package
+check-package: ## Check that the package is available for download
+	@echo GEEKBENCH_VERSION=${GEEKBENCH_VERSION}
+	@echo GEEKBENCH_PACKAGE=${GEEKBENCH_PACKAGE}
+	curl --max-filesize 1 -s -w "%{http_code}\n" -o /dev/null http://cdn.geekbench.com/${GEEKBENCH_PACKAGE} ; true

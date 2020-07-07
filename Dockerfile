@@ -1,4 +1,4 @@
-FROM ubuntu:bionic as builder
+FROM ubuntu:focal as builder
 
 ARG GEEKBENCH_VERSION
 ENV GEEKBENCH_VERSION=$GEEKBENCH_VERSION
@@ -23,7 +23,7 @@ RUN wget --quiet --no-check-certificate http://cdn.geekbench.com/$GEEKBENCH_PACK
     && rm -rf /tmp/$GEEKBENCH_PACKAGE
 
 
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 ARG GEEKBENCH_VERSION
 ENV GEEKBENCH_VERSION=$GEEKBENCH_VERSION
