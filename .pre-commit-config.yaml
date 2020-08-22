@@ -2,9 +2,8 @@
 exclude: '(venv|.vscode)'  # regex
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.5.0
+    rev: v3.2.0
     hooks:
-      - id: check-byte-order-marker
       - id: check-case-conflict
       - id: check-json
       - id: check-merge-conflict
@@ -12,26 +11,23 @@ repos:
       - id: check-xml
       - id: check-yaml
         args: ['--allow-multiple-documents']
-      - id: debug-statements
       - id: detect-private-key
       - id: end-of-file-fixer
-      - id: flake8
       - id: mixed-line-ending
         args: ['--fix=lf']
-      - id: requirements-txt-fixer
       - id: sort-simple-yaml
       - id: trailing-whitespace
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.7
+    rev: v1.1.9
     hooks:
       - id: remove-tabs
         exclude_types: [makefile, binary]
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.20.0
+    rev: v1.24.2
     hooks:
       - id: yamllint
   - repo: https://github.com/danielhoherd/pre-commit-hooks
-    rev: d0ec497c80183b0e8b19216154c26a956103a416
+    rev: 71f4ec08999cc9f2146a0067748dba5f38168c06
     hooks:
       - id: remove-unicode-non-breaking-spaces
       - id: remove-unicode-zero-width-non-breaking-spaces
