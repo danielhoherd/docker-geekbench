@@ -6,7 +6,7 @@ help: ## Print Makefile help
 
 
 SUDO               = $(shell which sudo)
-IMAGE_NAME        ?= danielhoherd/geekbench
+IMAGE_NAME        ?= quay.io/danielhoherd/geekbench
 CONTAINER_NAME    ?= geekbench
 NO_CACHE          ?= false
 ORG_PREFIX        ?= danielhoherd

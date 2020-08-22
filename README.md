@@ -19,10 +19,10 @@ Unofficial Docker image for Geekbench 4.
 ## Launch Command
 
 ```
-docker run --rm danielhoherd/geekbench
+docker run --rm quay.io/danielhoherd/geekbench
 ```
 
 ## Links
 
-- <https://hub.docker.com/r/danielhoherd/geekbench>
+- <https://quay.io/user/danielhoherd/geekbench>
 - <https://github.com/danielhoherd/docker-geekbench>
