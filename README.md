@@ -10,5 +10,5 @@ docker run --rm quay.io/danielhoherd/geekbench
 
 ## Links
 
-- <https://quay.io/user/danielhoherd/geekbench>
+- <https://quay.io/repository/danielhoherd/geekbench>
 - <https://github.com/danielhoherd/docker-geekbench>
