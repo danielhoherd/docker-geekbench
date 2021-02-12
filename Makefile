@@ -16,7 +16,7 @@ GIT_SHA_SHORT      = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo 
 GIT_SHA_LONG       = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo "DIRTY" ; else git rev-parse HEAD ; fi)
 BUILD_TIME         = $(shell date '+%s')
 RESTART           ?= always
-GEEKBENCH_VERSION ?= 5.3.1-Linux
+GEEKBENCH_VERSION ?= 5.3.2-Linux
 GEEKBENCH_PACKAGE ?= Geekbench-${GEEKBENCH_VERSION}.tar.gz
 
 
@@ -31,6 +31,7 @@ build: ## Build the Dockerfile found in PWD
 		-t "${IMAGE_NAME}:latest" \
 		-t "${IMAGE_NAME}:${GEEKBENCH_VERSION}" \
 		-t "${IMAGE_NAME}:${GIT_BRANCH}-${GIT_SHA_SHORT}" \
+		--label "com.geekbench.version=${GEEKBENCH_VERSION}" \
 		--label "${ORG_PREFIX}.repo.origin=${GIT_ORIGIN}" \
 		--label "${ORG_PREFIX}.repo.branch=${GIT_BRANCH}" \
 		--label "${ORG_PREFIX}.repo.commit=${GIT_SHA_LONG}" \
