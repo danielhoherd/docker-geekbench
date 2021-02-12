@@ -83,7 +83,7 @@ logs: ## View the last 30 minutes of log entries
 
 .PHONY: push
 push: ## Push built container to docker hub
-	docker push ${IMAGE_NAME}
+	docker push -a ${IMAGE_NAME}
 
 .PHONY: check-package
 check-package: ## Check that the package is available for download
