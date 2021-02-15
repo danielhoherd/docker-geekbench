@@ -1,6 +1,6 @@
 # Geekbench
 
-Unofficial Docker image for Geekbench 4.
+Unofficial Docker image for Geekbench.
 
 ## Launch Command
 
