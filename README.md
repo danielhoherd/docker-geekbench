@@ -4,7 +4,7 @@ Unofficial Docker image for Geekbench.
 
 ## Launch Command
 
-```
+```sh
 docker run -it --rm quay.io/danielhoherd/geekbench
 ```
 
