@@ -1,4 +1,4 @@
-FROM ubuntu:focal as builder
+FROM ubuntu:jammy as builder
 
 ARG GEEKBENCH_VERSION
 ENV GEEKBENCH_VERSION=$GEEKBENCH_VERSION
@@ -23,12 +23,10 @@ RUN wget --quiet --no-check-certificate http://cdn.geekbench.com/$GEEKBENCH_PACK
     && rm -rf /tmp/$GEEKBENCH_PACKAGE
 
 
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 ARG GEEKBENCH_VERSION
 ENV GEEKBENCH_VERSION=$GEEKBENCH_VERSION
-ARG GEEKBENCH_PACKAGE
-ENV GEEKBENCH_PACKAGE=$GEEKBENCH_PACKAGE
 
 RUN dpkg --add-architecture i386 \
     && apt-get update \
