@@ -91,3 +91,7 @@ check-package: ## Check that the package is available for download
 	@echo GEEKBENCH_VERSION=${GEEKBENCH_VERSION}
 	@echo GEEKBENCH_PACKAGE=${GEEKBENCH_PACKAGE}
 	curl --max-filesize 1 -s -w "%{http_code}\n" -o /dev/null http://cdn.geekbench.com/${GEEKBENCH_PACKAGE} ; true
+
+.PHONY: show-latest-version
+show-latest-version: ## Show the latest version download URL
+	curl -fsSL https://www.geekbench.com/download/linux | grep -m1 -o "https://cdn.geekbench[^\"']*"
