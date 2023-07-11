@@ -40,4 +40,4 @@ COPY --from=builder /opt/geekbench /opt/geekbench
 
 WORKDIR /opt/geekbench/Geekbench-$GEEKBENCH_VERSION
 
-CMD ["./geekbench5"]
+CMD ["./geekbench6"]

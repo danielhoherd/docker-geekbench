@@ -16,8 +16,8 @@ GIT_SHA_SHORT      = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo 
 GIT_SHA_LONG       = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo "DIRTY" ; else git rev-parse HEAD ; fi)
 BUILD_TIME         = $(shell date '+%s')
 RESTART           ?= always
-# https://www.primatelabs.com/release/geekbench5/
-GEEKBENCH_VERSION ?= 5.4.4-Linux
+# https://www.primatelabs.com/release/geekbench6/
+GEEKBENCH_VERSION ?= 6.1.0-Linux
 GEEKBENCH_PACKAGE ?= Geekbench-${GEEKBENCH_VERSION}.tar.gz
 
 
