@@ -1,4 +1,4 @@
-FROM ubuntu:jammy as builder
+FROM ubuntu:22.04 as builder
 
 ARG GEEKBENCH_VERSION
 ENV GEEKBENCH_VERSION=$GEEKBENCH_VERSION
@@ -23,7 +23,7 @@ RUN wget --quiet --no-check-certificate http://cdn.geekbench.com/$GEEKBENCH_PACK
     && rm -rf /tmp/$GEEKBENCH_PACKAGE
 
 
-FROM ubuntu:jammy
+FROM ubuntu:22.04
 
 ARG GEEKBENCH_VERSION
 ENV GEEKBENCH_VERSION=$GEEKBENCH_VERSION
