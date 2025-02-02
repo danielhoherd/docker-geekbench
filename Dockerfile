@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 as builder
+FROM ubuntu:24.04 AS builder
 
 ARG GEEKBENCH_VERSION
 ENV GEEKBENCH_VERSION=$GEEKBENCH_VERSION
@@ -7,15 +7,14 @@ ENV GEEKBENCH_PACKAGE=$GEEKBENCH_PACKAGE
 
 RUN test -n "$GEEKBENCH_VERSION" ; test -n "$GEEKBENCH_PACKAGE" ;
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN dpkg --add-architecture i386 \
-    && apt-get update \
-    && apt-get install \
+RUN apt-get update
+RUN apt-get install \
         --no-install-recommends \
         --yes \
-        wget \
-    && rm -rf /var/lib/apt/lists/*
+        wget
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN wget --quiet --no-check-certificate http://cdn.geekbench.com/$GEEKBENCH_PACKAGE -O /tmp/$GEEKBENCH_PACKAGE \
     && mkdir -p /opt/geekbench \
@@ -23,18 +22,10 @@ RUN wget --quiet --no-check-certificate http://cdn.geekbench.com/$GEEKBENCH_PACK
     && rm -rf /tmp/$GEEKBENCH_PACKAGE
 
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ARG GEEKBENCH_VERSION
 ENV GEEKBENCH_VERSION=$GEEKBENCH_VERSION
-
-RUN dpkg --add-architecture i386 \
-    && apt-get update \
-    && apt-get install \
-        --no-install-recommends \
-        --yes \
-        golang \
-    && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /opt/geekbench /opt/geekbench
 
