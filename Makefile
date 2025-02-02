@@ -15,6 +15,7 @@ GIT_BRANCH         = $(shell git rev-parse --abbrev-ref HEAD)
 GIT_SHA_SHORT      = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo "DIRTY" ; else git rev-parse --short HEAD ; fi)
 GIT_SHA_LONG       = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo "DIRTY" ; else git rev-parse HEAD ; fi)
 BUILD_TIME         = $(shell date '+%s')
+BUILD_ARCH         = $(shell uname -m)
 RESTART           ?= always
 # https://www.primatelabs.com/release/geekbench6/
 GEEKBENCH_VERSION ?= 6.4.0-Linux
@@ -31,12 +32,14 @@ build: ## Build the Dockerfile found in PWD
 		--build-arg GEEKBENCH_PACKAGE=${GEEKBENCH_PACKAGE} \
 		-t "${IMAGE_NAME}:latest" \
 		-t "${IMAGE_NAME}:${GEEKBENCH_VERSION}" \
+		-t "${IMAGE_NAME}:${GEEKBENCH_VERSION}-${BUILD_ARCH}" \
 		-t "${IMAGE_NAME}:${GIT_BRANCH}-${GIT_SHA_SHORT}" \
 		--label "com.geekbench.version=${GEEKBENCH_VERSION}" \
 		--label "${ORG_PREFIX}.repo.origin=${GIT_ORIGIN}" \
 		--label "${ORG_PREFIX}.repo.branch=${GIT_BRANCH}" \
 		--label "${ORG_PREFIX}.repo.commit=${GIT_SHA_LONG}" \
 		--label "${ORG_PREFIX}.build_time=${BUILD_TIME}" \
+		--label "${ORG_PREFIX}.build_arch=${BUILD_ARCH}" \
 		.
 
 .PHONY: install-hooks
