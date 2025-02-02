@@ -17,7 +17,7 @@ GIT_SHA_LONG       = $(shell if [ ! -z "`git status --porcelain`" ] ; then echo 
 BUILD_TIME         = $(shell date '+%s')
 RESTART           ?= always
 # https://www.primatelabs.com/release/geekbench6/
-GEEKBENCH_VERSION ?= 6.1.0-Linux
+GEEKBENCH_VERSION ?= 6.4.0-Linux
 GEEKBENCH_PACKAGE ?= Geekbench-${GEEKBENCH_VERSION}.tar.gz
 
 
