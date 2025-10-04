@@ -18,7 +18,7 @@ BUILD_TIME         = $(shell date '+%s')
 BUILD_ARCH         = $(shell uname -m)
 RESTART           ?= always
 # https://www.primatelabs.com/release/geekbench6/
-GEEKBENCH_VERSION ?= 6.4.0-Linux
+GEEKBENCH_VERSION ?= 6.5.0-Linux
 GEEKBENCH_PACKAGE ?= Geekbench-${GEEKBENCH_VERSION}.tar.gz
 
 
