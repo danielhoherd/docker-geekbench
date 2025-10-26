@@ -1,3 +1,5 @@
+**ARCHIVAL NOTICE**: This github repoistory is archived. Development continues at <https://gitlab.com/danielhoherd/docker-geekbench>
+
 # Geekbench
 
 Unofficial Docker image for Geekbench.
